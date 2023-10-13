@@ -1,4 +1,3 @@
-
 #ifndef MATRIX_KEYPAD_H
 #define	MATRIX_KEYPAD_H
 
@@ -25,4 +24,4 @@
 unsigned char read_matrix_keypad(unsigned char mode);
 void init_matrix_keypad(void);
 
-#endif	/* MATRIX_KEYPAD_H */
+#endif	
