@@ -1,8 +1,3 @@
-
-/* 
- * File:   clcd.h
- */
-
 #ifndef CLCD_H
 #define	CLCD_H
 
@@ -40,4 +35,4 @@ void clcd_print(const char *str, unsigned char addr);
 void clcd_write(unsigned char byte, unsigned char mode);
 void clcd_putch(const char data, unsigned char addr);
 
-#endif	/* CLCD_H */
+#endif	
