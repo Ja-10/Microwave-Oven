@@ -220,7 +220,6 @@ void set_time(unsigned char key)
     }
     if(key != ALL_RELEASED && key != '*' && key != '#')
     {
-        //if(key)
         key_count++;
         if(key_count <= 2)
         {
