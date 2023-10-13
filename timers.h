@@ -4,4 +4,4 @@
 
 void init_timer2(void);
 
-#endif	/* TIMERS_H */
+#endif	
