@@ -3,10 +3,9 @@
 #include "main.h"
 #include "matrix_keypad.h"
 #include "timers.h"
-#pragma config WDTE = OFF        // Watchdog Timer Enable bit (WDT disabled)
+#pragma config WDTE = OFF        
 int operation_mode, reset_flag,min, sec, ret, flag = 0, heat_flag =0, disp_flag;
 char sec_array[3], min_array[3];
-//min_array[2], sec_array[2];
 
 static void init_config(void) {
     init_clcd();
@@ -17,7 +16,6 @@ static void init_config(void) {
     
     BUZZER_DDR = 0;
     BUZZER = OFF;
-    //TRISC2 = 0;
     FAN_DDR = 0;
     FAN =OFF;
         
@@ -165,12 +163,7 @@ void opearation_call(unsigned char key)
             TMR2ON = OFF;
             FAN = OFF;
             operation_mode = COOKING_MODE_DISPLAY;
-            break;
-      /*  case PAUSE:
-            TMR2ON = OFF;
-             FAN = OFF;
-            break; */
-            
+            break;       
     }
     if(flag == 0)
     {
@@ -179,20 +172,16 @@ void opearation_call(unsigned char key)
   
 }
 
-
-
-// To Print Power on Message
 void power_on_screen(void) {
     for(int i = 0; i < 16; i++)
     {
-       clcd_putch(BLOCKS,LINE1(i)); // 0 to 15 for whole line 1
+       clcd_putch(BLOCKS,LINE1(i)); 
        clcd_putch(BLOCKS,LINE2(i));
     }
     clcd_print("  Powering ON ", LINE2(2));
     clcd_print(" Microwave Oven ", LINE3(1));
-
-    // Delay
-    __delay_ms(1000); // 3sec
+    
+    __delay_ms(1000); 
 }
 
 void cooking_header(void)
@@ -236,7 +225,6 @@ void set_time(unsigned char key)
         if(key_count <= 2)
         {
             sec = sec * 10 + key; 
-            // blink_pos = 1;
          
         }
         else if (key_count > 2 && key_count < 5) 
@@ -246,11 +234,11 @@ void set_time(unsigned char key)
         }
         if(key_count < 2)
         {
-            //blink_pos = 0;
+            
         }
         else if(key_count > 2 && key_count < 5)
         {
-             //blink_pos = 1;
+            
         }
     }
     
@@ -260,13 +248,11 @@ void set_time(unsigned char key)
         {
             sec = 0;
             key_count = 0;
-         //blink_pos = 0;
         }
         else if (key_count > 2 && key_count < 5)
         {
             min = 0;
             key_count = 2;
-          //blink_pos = 1;
         }
     }
     else if (key == '#')
@@ -374,7 +360,6 @@ char set_temp(unsigned char key)
     static int blink, wait, key_count, temp; 
     if(reset_flag == RESET_TEMP)
     {
-        //clcd_write(DISP_ON_AND_CURSOR_OFF, INST_MODE);
         key = ALL_RELEASED; 
         key_count = 0;
         blink = 0;
@@ -389,7 +374,6 @@ char set_temp(unsigned char key)
     }
      if(key != ALL_RELEASED && key != '*' && key != '#')
     {
-        //if(key)
         key_count++;
         if(key_count <= 3)
         {
